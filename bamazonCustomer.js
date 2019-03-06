@@ -16,21 +16,23 @@ connection.connect(function(err) {
 });
 
 function start() {
+    // console.table("SELECT * FROM products");
     connection.query("SELECT * FROM products", function(err, res){
-        if (err) throw err;   
+        if (err) throw err;  
+        console.table(res); 
     inquirer
     .prompt([
         {
         name: "id",
-        type: "rawlist",
+        type: "list",
         choices: function() {
             var idArray = [];
             for (var i = 0; i < res.length; i++) {
-                idArray.push(res[i].product_name);
+                idArray.push(res[i].item_id + " " + res[i].product_name);
             }
             return idArray;
         },
-        message: "What is the ID of the product you would like to buy?"
+        message: "Select the ID of the product you would like to buy?"
     },
     {
         name: "quantity",
@@ -40,6 +42,16 @@ function start() {
     ])
     .then(function(answers){
         console.log(answers.id);
+        console.log(answers.quantity);
+        var index = answers.id - 1;
+        var chosenItem = res[index]; 
+        var chosenItemQuantity = chosenItem.stock_quantity;
+        if(answers.quantity > chosenItemQuantity){
+            console.log("Insufficient Quantity!");
+        }
+        else {
+           var updatedQuantity = chosenItemQuantity - answers.quantity;
+        }
         connection.end();
     });
 });   
