@@ -49,8 +49,14 @@ function start() {
                 // console.log(chosenItemQuantity);
                 if (answers.quantity > chosenItemQuantity) {
                     console.log("Insufficient Quantity!");
-                } else {
+                } else {              
                     var updatedQuantity = chosenItemQuantity - answers.quantity;
+                    connection.query("UPDATE products SET ? WHERE ?", [
+                        {stock_quantity: updatedQuantity},
+                        {item_id: chosenItem.item_id}
+                    ], function(error){
+                        if (error) throw error;
+                    })
                     var total = (res[index].price * answers.quantity).toFixed(2);
                     console.log(res[index].price);
                     console.log("The total cost of your purchase is: $" + total);
