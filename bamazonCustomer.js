@@ -44,17 +44,26 @@ function start() {
         console.log(answers.id);
         console.log(answers.quantity);
         var index = answers.id - 1;
-        var chosenItem = res[index]; 
+        var chosenItem = res[0]; 
         var chosenItemQuantity = chosenItem.stock_quantity;
         if(answers.quantity > chosenItemQuantity){
             console.log("Insufficient Quantity!");
         }
         else {
            var updatedQuantity = chosenItemQuantity - answers.quantity;
+           connection.query("UPDATE products SET ? WHERE ?",[{stock_quantity : updatedQuantity},
+            {item_id : index}], 
+            function(err, res) {
+                if (err) throw err;
+            })
+
+        var total = res[0].price * answer.quantity;
+        console.log("The total cost of your purchase is: " + total);
+
         }
         connection.end();
     });
 });   
-};
+}
 
 
