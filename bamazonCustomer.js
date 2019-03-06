@@ -55,7 +55,7 @@ function start() {
                         {stock_quantity: updatedQuantity},
                         {item_id: chosenItem.item_id}
                     ], function(error){
-                        if (error) throw error;
+                        if (err) throw err;
                     })
                     var total = (res[index].price * answers.quantity).toFixed(2);
                     console.log(res[index].price);
