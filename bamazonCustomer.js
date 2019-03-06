@@ -51,17 +51,11 @@ function start() {
                     console.log("Insufficient Quantity!");
                 } else {
                     var updatedQuantity = chosenItemQuantity - answers.quantity;
-                    //    connection.query("UPDATE products SET ? WHERE ?",[{stock_quantity : updatedQuantity},
-                    //     {item_id : index}], 
-                    //     function(err, res) {
-                    //         if (err) throw err;
                     var total = (res[index].price * answers.quantity).toFixed(2);
                     console.log(res[index].price);
-                    console.log("The total cost of your purchase is: " + total);
+                    console.log("The total cost of your purchase is: $" + total);
                 // })
                 };
-
-
 
                 connection.end();
             });
