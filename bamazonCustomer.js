@@ -60,7 +60,6 @@ function start() {
                     var total = (res[index].price * answers.quantity).toFixed(2);
                     console.log(res[index].price);
                     console.log("The total cost of your purchase is: $" + total);
-                // })
                 };
 
                 connection.end();
