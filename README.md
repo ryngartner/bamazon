@@ -8,4 +8,5 @@ Bamazon Customer is a retail app that allows the user to select from a list of 1
 *Inventory of item is reduced
 *If inventory is lower than quantity requested "Insufficient Quantity!" message is displayed
 
-https://drive.google.com/file/d/1gFzPtXrIHZZkZsqaqKV8JmQ31tCmobjo/view
+
+* Link to short video showing the app in action - https://drive.google.com/file/d/1gFzPtXrIHZZkZsqaqKV8JmQ31tCmobjo/view
